@@ -22,11 +22,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        // this is not a good practice
-        // we should use singleton for this
-        database = Room.databaseBuilder(applicationContext,
-            ContactDatabase::class.java,
-            "contactDB").build()
+        database = ContactDatabase.getDatabase(this)
 
         GlobalScope.launch { // this Coroutine for background thread
             database.contactDao().insertContact(Contact(0, "Arslan", "03451234567"))
