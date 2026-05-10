@@ -18,12 +18,6 @@ abstract class ContactDatabase : RoomDatabase(){
     abstract fun contactDao(): ContactDAO
 
     companion object{
-
-        val migration_1_2 = object : Migration(1, 2){
-            override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("ALTER TABLE contact ADD COLUMN isActive INTEGER NOT NULL DEFAULT(1)")
-            }
-        }
         @Volatile // when anything is assign to INSTANCE, so that will be available to every thread because of this 'Volatile' keywork
         private var INSTANCE: ContactDatabase? = null
         fun getDatabase(context: Context): ContactDatabase{
@@ -32,7 +26,6 @@ abstract class ContactDatabase : RoomDatabase(){
                      INSTANCE = Room.databaseBuilder(context.applicationContext,
                          ContactDatabase::class.java,
                          "contactDB")
-                         .addMigrations(migration_1_2)
                          .build()
                  }
 

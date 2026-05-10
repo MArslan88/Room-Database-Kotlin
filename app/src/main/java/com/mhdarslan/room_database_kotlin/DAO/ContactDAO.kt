@@ -17,7 +17,7 @@ interface ContactDAO {
     suspend fun updateContact(contact: Contact)
 
     @Delete
-    suspend fun deleteContact(contact: Contact)
+    fun deleteContact(contact: Contact)
 
     // here i use LiveData, and room is compatible with livedata so it will run in background thread,
     // we don't need to use suspend keyword here
