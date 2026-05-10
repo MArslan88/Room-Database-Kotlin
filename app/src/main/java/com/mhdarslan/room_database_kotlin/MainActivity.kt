@@ -13,6 +13,7 @@ import com.mhdarslan.room_database_kotlin.DBModel.ContactDatabase
 import com.mhdarslan.room_database_kotlin.databinding.ActivityMainBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         database = ContactDatabase.getDatabase(this)
 
         GlobalScope.launch { // this Coroutine for background thread
-            database.contactDao().insertContact(Contact(0, "Arslan", "03451234567"))
+            database.contactDao().insertContact(Contact(0, "Arslan", "03451234567", Date()))
         }
 
     }
