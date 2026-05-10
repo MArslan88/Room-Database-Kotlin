@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         database = ContactDatabase.getDatabase(this)
 
         GlobalScope.launch { // this Coroutine for background thread
-            database.contactDao().insertContact(Contact(0, "Arslan", "03451234567", Date()))
+            database.contactDao().insertContact(Contact(0, "Arslan", "03451234567", Date(), 1))
         }
 
     }
